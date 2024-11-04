@@ -1,7 +1,5 @@
 #include <Arduino.h>
 
-// Define the pins for RGB LED and buttons
-
 // RGB LED pins
 const int LED_RED_PIN = 5;
 const int LED_GREEN_PIN = 6;
@@ -31,10 +29,10 @@ void setup() {
   pinMode(BUTTON_START_STOP_PIN, INPUT_PULLUP);
   pinMode(BUTTON_DIFFICULTY_PIN, INPUT_PULLUP);
 
-  // Initialize serial communication
+  
   Serial.begin(9600);
 
-  // Set the LED to white in idle state (all colors on)
+  // Set the LED to white in idle state 
   digitalWrite(LED_RED_PIN, LOW);
   digitalWrite(LED_GREEN_PIN, LOW);
   digitalWrite(LED_BLUE_PIN, LOW);
@@ -117,7 +115,7 @@ void loop() {
       Serial.println("Time's up! New word: " + words[wordIndex]);
       lastWordTime = millis();
       digitalWrite(LED_RED_PIN, LOW);
-      digitalWrite(LED_GREEN_PIN, HIGH); // Reset to green for new word
+      digitalWrite(LED_GREEN_PIN, HIGH); 
     }
 
     // Check for input from serial
@@ -135,7 +133,7 @@ void loop() {
         wordIndex = random(0, 5);
         lastWordTime = millis();
         Serial.println("Correct! Next word: " + words[wordIndex]);
-        digitalWrite(LED_GREEN_PIN, HIGH); // Keep LED green
+        digitalWrite(LED_GREEN_PIN, HIGH); 
       } else {
         // Incorrect word typed
         digitalWrite(LED_GREEN_PIN, LOW);
